@@ -1,0 +1,178 @@
+body,html{width: 100%;height: 100%;}
+.layui-tab-title li{display: none;}
+.layui-tab-title li:first-of-type{display: inline-block!important;}
+/*首页*/
+.wrapper{display: flex;align-items: center;justify-content: center;flex-direction: column;padding: 50px 0;}
+.layui-tab-item,.layui-tab,.layui-tab-content,.wrapper{width: 100%;height: 100%;}
+.layui-tab-content{height: calc(100% - 40px);overflow-x: hidden;}
+/*登录*/
+.login{background: url(../img/admin-login-bg.jpg) no-repeat;background-size: 100% 100%;}
+.login h1{font-size: 30px;position: fixed;top:0;left: 0;background: #426374;color: white;border-bottom: 1px solid white;width: 100%;line-height: 60px;text-indent: 20px;}
+.login .footer{position: fixed;bottom: 0;left: 0;width: 100%;color: white;border-top: 1px solid white;background: #426374;line-height: 40px;line-height: 50px;text-align: center;}
+.login form{border: 1px solid #DEDEDE;border-radius: 5px;padding:60px;background: rgba(255,255,255,.1);}
+.login .layui-form-item .layui-input-inline{width: 280px;}
+.login .layui-btn{width: 130px;}
+.login .layui-btn-primary{float: right;position: relative;top: -38px;}
+.layui-input-block{width: 300px;}
+.table-top{text-align: right;line-height: 40px;display: flex;justify-content: space-between;}
+.main{width: 100%;height: 100%;overflow-x: hidden;}
+.main form{display: flex;flex-direction: column;align-items: center;}
+.table-bottom{display: flex;justify-content: space-between;}
+.tabnum{display: flex;align-items: center;}
+.tabnum input{padding: 0;width: 60px;margin: 0 5px;height: 30px;}
+.layui-body{overflow-y: hidden;}
+.layui-tab-item, .layui-tab, .layui-tab-content, .wrapper{box-sizing: border-box;}
+.dl-this{background-color: #009688!important;color: #fff!important;}
+.filebox{position: relative;}
+.filebox .layui-form-label,.filebox .layui-input-block{height: 150px;}
+.fileimg{height:150px;position: absolute;top: 0;left:5px}
+.filebox input{display: none;}
+.filebox .layui-input-block{border: 1px solid #D2D2D2;border-radius: 0 2px 0 2px;box-sizing: border-box;}
+select,option{border: 1px solid #d2d2d2;height: 38px;box-sizing: border-box;width: 30%;}
+.alert{width: 100%;height: 100%;background: white;position: fixed;top: 0;left: 0;display: none;}
+.alert-top{width: 100%;height: 30px;border-bottom: 1px solid #D2D2D2;display: flex;align-items: center;justify-content: space-between;}
+.alert-top span{margin-left: 10px;}
+.alert-top img{width: 16px;height: 16px;margin-right: 10px;}
+.alert-main{width: 100%;height: calc(100% - 60px);overflow-y: scroll;display: flex;flex-wrap: wrap;padding-bottom: 50px;justify-content: center;}
+.alert-main form{width: 48%;display: flex;flex-direction: column;align-items: center;}
+.alert-main h1{text-align: center;margin-bottom: 10px;width:100%;}
+.alert-main .layui-form-label{width:150px}
+.alert-main .layui-input-block{margin-left: 150px;}
+.setting{display: flex;justify-content: space-around;align-items: center;}
+.setting img{width: 15px;height: 15px;}
+.form-top{flex-direction: row!important;}
+.form-top input{height: 40px;border: 1px solid #D2D2D2;border-radius: 5px;margin-right: 5px;text-indent: 5px;}
+.Calendar_main .input-mini {
+	background-color: #eee;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	color: #555;
+	font-size: 11px;
+	height: 34px;
+	line-height: 34px;
+	vertical-align: middle;
+	margin: 0 0 10px 0;
+	padding: 0 6px;
+	width: 84px;
+}
+.Calendar_main label {
+	color: #333;
+	font-size: 11px;
+	font-weight: normal;
+	margin-bottom: 2px;
+	text-shadow: #fff 1px 1px 0px;
+	text-transform: uppercase;
+	padding-right: 10px;
+	padding-left: 10px;
+	height: 34px;
+	line-height: 34px;
+}
+.Calendar_main {
+	border: 1px solid #ccc;
+	padding: 4px;
+	margin-top: 1px;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	border-collapse: separate;
+}
+.Calendar_main .zbtn {
+	display: inline-block;
+	padding: 6px 12px;
+	margin-bottom: 0;
+	font-size: 14px;
+	font-weight: normal;
+	line-height: 1.428571429;
+	text-align: center;
+	white-space: nowrap;
+	vertical-align: middle;
+	cursor: pointer;
+	border: 1px solid transparent;
+	border-radius: 4px;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	-o-user-select: none;
+	user-select: none;
+}
+.Calendar_main .btn-success {
+	color: #fff;
+	background-color: #47a447;
+	border-color: #398439;
+	text-decoration: none;
+}
+.Calendar_main .btn-default {
+	color: #333;
+	background-color: #fff;
+	border-color: #ccc;
+}
+.Calendar_main .table-condensed th {
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 14px;
+	line-height: 1.428571429;
+}
+.Calendar_main .table-condensed th, .Calendar_main .table-condensed td {
+	text-align: center;
+	color: #333;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	white-space: nowrap;
+	font-size:12px
+}
+.Calendar_main .table-condensed td {
+	cursor: pointer;
+}
+.Calendar_main .table-condensed .next, .Calendar_main .table-condensed .prev {
+	cursor: pointer;
+}
+.Calendar_main .calendar_bbb {
+	border: 1px solid #ddd;
+	border-radius: 4px;
+	background: #fff;
+}
+.Calendar_main .table-condensed tr td.days {
+	background-color: #357ebd;
+	border-color: #3071a9;
+	color: #fff;
+}
+.Calendar_main .table-condensed tr td.last {
+	color: #cccccc;
+}
+.Calendar_main .next i {
+	display: block;
+	width: 12px;
+	height: 13px;
+	background-image: url(next.jpg);
+	background-repeat: no-repeat;
+	user-select: none;
+	-moz-user-select: none;
+	-webkit-user-select: none;
+	-ms-user-select: none;
+	-khtml-user-select: none;
+}
+.Calendar_main .prev {
+	display: block;
+	width: 12px;
+	height: 13px;
+	background-image: url(prev.jpg);
+	background-repeat: no-repeat;
+	user-select: none;
+	-moz-user-select: none;
+	-webkit-user-select: none;
+	-ms-user-select: none;
+	-khtml-user-select: none;
+}
+.avatar{width: 40px;height: 40px;position: absolute;top: 0;left: 0;}
+.main form{flex: 1;}
+#main,#main01{width: 100%;height: calc(100% - 40px);}
+.layui-input{border: 0;}
+.layui-input-block{border: 1px solid gainsboro;box-sizing: border-box;height: 38px;overflow: hidden;}
+input[type='file']{display: block;margin: 5px auto;}
+.locus{width: 100%;height: 100%;position: fixed;top: 0;left: 0;background: white;z-index: 999;}
+.locus .locus-top{display: flex;align-items: center;}
+.locus #container{width:100%;height: calc(100% - 40px);}
+html,body{width: 100%;height: 100%;}
+.form-group{display: flex;flex: 1;}
+.layui-nav-tree .layui-nav-child div{height: 40px;line-height: 40px;padding: 0 20px;}
+.layui-input-inline{border: 1px solid #e6e6e6;border-left: 0;box-sizing: border-box;height: 38px;overflow: hidden;}

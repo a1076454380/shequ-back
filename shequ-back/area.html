@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/main.css" />
+		<link rel="stylesheet" type="text/css" href="layui/css/layui.css"/>
+		<script src="http://webapi.amap.com/maps?v=1.4.5&key=e8d613b264dcd6ca83d12f759c9690ed&plugin=AMap.PolyEditor,AMap.CircleEditor"></script>
+		<script type="text/javascript" src="http://cache.amap.com/lbs/static/addToolbar.js"></script>
+		<script src="layui/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<style type="text/css">
+		html,
+		body {
+			width: calc(100% - 4px);
+			height: 100%;
+			overflow: hidden;
+		}
+		.layui-input-block{overflow: inherit;border: 0;}
+		.layui-form{display: flex;width: 100%;justify-content: space-between;align-items: center;}
+		.layui-input-block{width: inherit;}
+		.clear{width: 15px;height: 15px;margin-left: 10px;}
+	</style>
+
+	<body>
+		<div class="locus">
+			<div class="locus-top">
+				<form class="layui-form" action="">
+					<div class="form-group">
+					<div class="layui-form-item">
+						<label class="layui-form-label">区域名称</label>
+						<div class="layui-input-block">
+							<input type="text" name="title" required lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label">网格管理员</label>
+						<div class="layui-input-block">
+							<select name="city" lay-verify="required">
+								<option value=""></option>
+								<option value="0">北京</option>
+								<option value="1">上海</option>
+								<option value="2">广州</option>
+								<option value="3">深圳</option>
+								<option value="4">杭州</option>
+							</select>
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label">是否启用</label>
+						<div class="layui-input-block">
+							<input type="radio" name="sex" value="是" title="是">
+							<input type="radio" name="sex" value="否" title="否" checked>
+						</div>
+					</div>
+					
+					</div>
+					<input type="button" class="layui-btn" value="开始编辑网格" onClick="editor.startEditPolygon()" />
+					<input type="button" class="layui-btn" value="结束编辑网格" onClick="editor.closeEditPolygon()" />
+					<img src="img/clear.png" class="clear"/>
+				</form>
+			</div>
+			<div id="container"></div>
+			<script src="layui/layui.js" type="text/javascript" charset="utf-8"></script>
+		</div>
+		<script>
+			$(function(){
+				$('.clear').click(function(){
+					window.history.back()
+				})
+			})
+			layui.use('form', function(){
+			  var form = layui.form;
+			});
+			var editorTool, map = new AMap.Map("container", {
+				resizeEnable: true,
+				center: [116.403322, 39.900255], //地图中心点
+				zoom: 15 //地图显示的缩放级别
+			});
+			//在地图上绘制折线
+			var editor = {};
+			editor._polygon = (function() {
+				var arr = [ //构建多边形经纬度坐标数组
+					[116.403322, 39.920255],
+					[116.410703, 39.897555],
+					[116.402292, 39.892353],
+					[116.389846, 39.891365]
+				]
+				return new AMap.Polygon({
+					map: map,
+					path: arr,
+					strokeColor: "#009688",
+					strokeOpacity: 1,
+					strokeWeight: 3,
+					fillColor: "#009688",
+					fillOpacity: 0.1
+				});
+			})();
+			map.setFitView();
+			editor._polygonEditor = new AMap.PolyEditor(map, editor._polygon);
+
+			editor.startEditPolygon = function() {
+				editor._polygonEditor.open();
+			}
+			editor.closeEditPolygon = function(res) {
+				var a = editor._polygon.getPath();
+				console.log(a);
+				var larr = []
+				var latarr = []
+				for(var i = 0; i < a.length; i++) {
+					larr.push(a[i].lng)
+					latarr.push(a[i].lat)
+				}
+				console.log(larr)
+				console.log(latarr)
+				editor._polygonEditor.close();
+			}
+		</script>
+	</body>
+
+</html>
