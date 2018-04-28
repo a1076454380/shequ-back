@@ -89,7 +89,6 @@
 					</ul>
 				</div>
 			</div>
-
 			<div class="layui-body">
 				<!-- 内容主体区域 -->
 				<div class="layui-tab" lay-filter="demo">
@@ -251,7 +250,6 @@
 							j++
 						}
 					}
-					
 					if(j==10){
 						layer.msg('您最多只能选择10个选项卡，请关闭多余选项卡再试');
 						return
@@ -259,7 +257,6 @@
 					var num=$(this).attr('data-num')
 					var target=$(this).attr('data-target')
  					$('iframe').eq(num-1).attr('src',target)
-					
 					$('.layui-tab-title li').eq(num).css('display','inline-block')
 					$('.layui-tab-title li').removeClass('layui-this')
 					$('.layui-tab-title li').eq(num).addClass('layui-this')
@@ -273,11 +270,20 @@
 					$('.layui-tab-title li').eq(23).click()
 					allnum++
 				})
-				$('.layui-tab-title').on('click','.layui-tab-close',function(){
-					console.log($('.layui-tab-title li').eq(0).click())
+				$('.layui-tab-title').on('click','.layui-tab-close',function(e){
 					$(this).parent().hide()
 					allnum--
-					event.stopPropagation();
+					e=window.event||e;
+
+				    if(document.all){  //只有ie识别
+				
+				        e.cancelBubble=true;
+				
+				    }else{
+				
+				        e.stopPropagation();
+				
+				    }
 				})
 
 			})

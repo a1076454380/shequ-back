@@ -14,7 +14,7 @@
 			<h1>
 				欢迎使用后台管理系统
 			</h1>
-			<form class="layui-form layui-form-pane" action="">
+			<form class="layui-form layui-form-pane" action="index.html" method="post">
 				<div class="layui-form-item">
 					<label class="layui-form-label">用户名</label>
 					<div class="layui-input-inline">
@@ -30,26 +30,13 @@
 					<div class="layui-form-mid layui-word-aux">辅助文字</div>
 				</div>
 				<div class="layui-form-item" style="display: flex;justify-content: space-around;">
-					 <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
-					 <button type="reset" class="layui-btn">重置</button>
+					 <input class="layui-btn" type="submit" value="提交">
+					 <input class="layui-btn" type="reset" value="重置">
 				</div>
 			</form>
 			<div class="footer">
 				Copyright 你的公司名称 by H-ui.admin v3.1
 			</div>
 		</div>
-		
-		<script src="layui.js" type="text/javascript" charset="utf-8"></script>
-		<script src="lay/modules/layer.js" type="text/javascript" charset="utf-8"></script>
 	</body>
-	<script type="text/javascript">
-		layui.use('form', function(){
-		  var form = layui.form;
-		  //监听提交
-		  form.on('submit(formDemo)', function(data){
-		    layer.msg(JSON.stringify(data.field));
-		    return false;
-		  });
-		});
-	</script>
 </html>
