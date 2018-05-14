@@ -272,6 +272,10 @@
 				})
 				$('.layui-tab-title').on('click','.layui-tab-close',function(e){
 					$(this).parent().hide()
+					$('.layui-tab-item').removeClass('layui-show')
+					$('.layui-tab-item').eq(0).addClass('layui-show')
+					$('.layui-tab-title li').removeClass('layui-this')
+					$('.layui-tab-title li').eq(0).addClass('layui-this')
 					allnum--
 					e=window.event||e;
 

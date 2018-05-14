@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 	<head>
 		<meta charset="UTF-8">
 		<title></title>
@@ -81,9 +82,9 @@
 						</div>
 
 					</div>
-					<input type="button" class="layui-btn" value="开始编辑网格" onClick="editor.startEditPolygon()" id="start"/>
-					<input type="button" class="layui-btn" value="结束编辑网格" onClick="editor.closeEditPolygon()" id="end"/>
-					<input type="button" class="layui-btn" value="提交"  id="submit" onClick='mysubmit()'/>
+					<input type="button" class="layui-btn" value="开始编辑网格" onClick="editor.startEditPolygon()" id="start" />
+					<input type="button" class="layui-btn" value="结束编辑网格" onClick="editor.closeEditPolygon()" id="end" />
+					<input type="button" class="layui-btn" value="提交" id="submit" onClick='mysubmit()' />
 					<img src="img/clear.png" class="clear" />
 				</form>
 			</div>
@@ -104,11 +105,40 @@
 			var editor = {};
 			var larr = []
 			var latarr = []
-			var editorTool, map = new AMap.Map("container", {
+			var map = new AMap.Map("container", {
 				resizeEnable: true,
 				center: [116.403322, 39.900255], //地图中心点
 				zoom: 15
 			});
+			var arr = [ //构建多边形经纬度坐标数组
+					[116.403322, 39.920255],
+					[116.410703, 39.897555],
+					[116.402292, 39.892353],
+					[116.389846, 39.891365]
+				]
+			var arr02 = [ //构建多边形经纬度坐标数组
+					[116.404322, 39.921255],
+					[116.411703, 39.898555],
+					[116.403292, 39.893353],
+					[116.390846, 39.892365]
+				]
+			newmap(arr)
+			newmap(arr02)
+			function newmap(id){
+				editor._polygon = (function() {
+					return new AMap.Polygon({
+						map: map,
+						path: id,
+						strokeColor: "red",
+						strokeOpacity: 1,
+						strokeWeight: 3,
+						fillColor: "red",
+						fillOpacity: 0.1
+					});
+				})();
+				map.setFitView();
+				editor._polygonEditor = new AMap.PolyEditor(map, editor._polygon);
+			}
 			AMapUI.loadUI(['misc/PoiPicker'], function(PoiPicker) {
 				var poiPicker = new PoiPicker({
 					//city:'北京',
@@ -127,12 +157,18 @@
 				});
 				//选取了某个POI
 				poiPicker.on('poiPicked', function(poiResult) {
+					map = new AMap.Map("container", {
+						resizeEnable: true,
+						center: [116.403322, 39.900255], //地图中心点
+						zoom: 15
+					});
 					for(var i = 0; i < 2; i++) {
 						arr.push(
-							[poiResult.item.location.lng-(0.01*i),poiResult.item.location.lat]
+							[poiResult.item.location.lng - (0.01 * i), poiResult.item.location.lat]
 						)
 					}
 					$('#start').show()
+					
 					var source = poiResult.source,
 						poi = poiResult.item,
 						info = {
@@ -190,10 +226,11 @@
 					larr.push(a[i].lng)
 					latarr.push(a[i].lat)
 				}
-				
+
 				editor._polygonEditor.close();
 			}
-			function mysubmit(){
+
+			function mysubmit() {
 				console.log(larr)
 				console.log(latarr)
 			}
