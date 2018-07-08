@@ -105,10 +105,12 @@
 			var editor = {};
 			var larr = []
 			var latarr = []
+			var arr;
 			var map = new AMap.Map("container", {
 				resizeEnable: true,
 				center: [116.403322, 39.900255], //地图中心点
-				zoom: 15
+				zoom: 30,
+				layers: [new AMap.TileLayer.Satellite()]
 			});
 			var arr = [ //构建多边形经纬度坐标数组
 					[116.403322, 39.920255],
@@ -149,7 +151,6 @@
 			});
 
 			function poiPickerReady(poiPicker) {
-				var arr = []
 				window.poiPicker = poiPicker;
 				var marker = new AMap.Marker();
 				var infoWindow = new AMap.InfoWindow({
@@ -157,10 +158,12 @@
 				});
 				//选取了某个POI
 				poiPicker.on('poiPicked', function(poiResult) {
+					arr = []
 					map = new AMap.Map("container", {
 						resizeEnable: true,
 						center: [116.403322, 39.900255], //地图中心点
-						zoom: 15
+						zoom: 15,
+						layers: [new AMap.TileLayer.Satellite()]
 					});
 					for(var i = 0; i < 2; i++) {
 						arr.push(
